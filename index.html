@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Zuhaib Imtiaz – Senior iOS Engineer</title>
+<style>
+:root {
+  --accent:#1F618D;
+  --accent2:#2E86C1;
+  --accent3:#5DADE2;
+  --bg:#000;
+  --glass:rgba(255,255,255,0.06);
+  --glass-border:rgba(255,255,255,0.14);
+  --glass-hover:rgba(255,255,255,0.1);
+  --text:#fff;
+  --muted:rgba(255,255,255,0.55);
+  --green:#30D158;
+  --blur:blur(24px) saturate(180%);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','SF Pro Text','Helvetica Neue',sans-serif;
+  font-size:15px;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+/* ── BG ORBS ── */
+.orbs{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.45;animation:drift 18s ease-in-out infinite alternate;}
+.orb1{width:600px;height:600px;background:radial-gradient(circle,#1a4a7a,transparent);top:-100px;left:-100px;animation-delay:0s;}
+.orb2{width:500px;height:500px;background:radial-gradient(circle,#0d3d6b,transparent);bottom:-100px;right:-100px;animation-delay:-6s;}
+.orb3{width:400px;height:400px;background:radial-gradient(circle,#1b3a5c,transparent);top:40%;left:40%;animation-delay:-12s;}
+@keyframes drift{0%{transform:translate(0,0) scale(1);}100%{transform:translate(40px,30px) scale(1.1);}}
+
+/* ── GLASS ── */
+.glass{
+  background:var(--glass);
+  backdrop-filter:var(--blur);
+  -webkit-backdrop-filter:var(--blur);
+  border:1px solid var(--glass-border);
+  border-radius:20px;
+}
+.glass-sm{
+  background:var(--glass);
+  backdrop-filter:var(--blur);
+  -webkit-backdrop-filter:var(--blur);
+  border:1px solid var(--glass-border);
+  border-radius:14px;
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:16px;left:50%;transform:translateX(-50%);
+  z-index:200;width:calc(100% - 48px);max-width:900px;
+  background:rgba(0,0,0,0.4);
+  backdrop-filter:blur(40px) saturate(200%);
+  -webkit-backdrop-filter:blur(40px) saturate(200%);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:99px;
+  padding:10px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav-logo{font-weight:700;font-size:15px;letter-spacing:.5px;}
+.nav-logo span{color:var(--accent3);}
+.nav-links{display:flex;gap:4px;}
+.nav-links a{
+  color:var(--muted);font-size:13px;padding:6px 14px;border-radius:99px;
+  transition:all .2s;text-decoration:none;
+}
+.nav-links a:hover{color:var(--text);background:rgba(255,255,255,0.08);}
+.nav-cta{
+  background:linear-gradient(135deg,var(--accent),var(--accent3));
+  color:#fff;font-size:13px;font-weight:600;padding:8px 18px;
+  border-radius:99px;text-decoration:none;border:none;cursor:pointer;
+  box-shadow:0 0 20px rgba(46,134,193,0.4);transition:all .2s;
+}
+.nav-cta:hover{box-shadow:0 0 30px rgba(93,173,226,0.6);transform:scale(1.03);}
+
+/* ── SECTIONS ── */
+section{position:relative;z-index:1;padding:100px 24px;}
+.container{max-width:1000px;margin:0 auto;}
+.section-eyebrow{font-size:11px;font-weight:600;letter-spacing:3px;color:var(--accent3);text-transform:uppercase;margin-bottom:10px;}
+.section-title{font-size:40px;font-weight:700;margin-bottom:48px;letter-spacing:-.5px;}
+.section-title span{
+  background:linear-gradient(135deg,#fff 30%,var(--accent3));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+
+/* ── HERO ── */
+#hero{min-height:100vh;display:flex;align-items:center;padding-top:100px;}
+.hero-inner{display:grid;grid-template-columns:1fr 260px;gap:60px;align-items:center;}
+.hero-pill{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(48,209,88,0.12);border:1px solid rgba(48,209,88,0.3);
+  border-radius:99px;padding:6px 16px;font-size:12px;color:var(--green);
+  margin-bottom:24px;
+}
+.hero-pill .dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(48,209,88,.4);}50%{opacity:.7;box-shadow:0 0 0 6px rgba(48,209,88,0);}}
+.hero-name{font-size:68px;font-weight:800;line-height:1;letter-spacing:-2px;margin-bottom:8px;}
+.hero-name .first{color:#fff;}
+.hero-name .last{
+  background:linear-gradient(135deg,var(--accent2),var(--accent3),#a8d8f0);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-role{
+  font-size:18px;color:var(--muted);margin-bottom:20px;
+  display:flex;align-items:center;gap:10px;
+}
+.hero-role::before{content:'';display:inline-block;width:28px;height:2px;background:var(--accent3);}
+.hero-desc{font-size:16px;color:rgba(255,255,255,.6);max-width:520px;margin-bottom:36px;line-height:1.8;}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-glass{
+  padding:12px 24px;border-radius:99px;font-size:14px;font-weight:600;cursor:pointer;
+  background:var(--glass);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);
+  border:1px solid var(--glass-border);color:var(--text);text-decoration:none;
+  transition:all .25s;display:inline-block;
+}
+.btn-glass:hover{background:var(--glass-hover);border-color:rgba(255,255,255,.25);transform:translateY(-2px);}
+.btn-glow{
+  padding:12px 24px;border-radius:99px;font-size:14px;font-weight:600;cursor:pointer;
+  background:linear-gradient(135deg,var(--accent),var(--accent3));
+  color:#fff;text-decoration:none;border:none;
+  box-shadow:0 0 24px rgba(46,134,193,.5);transition:all .25s;display:inline-block;
+}
+.btn-glow:hover{box-shadow:0 0 40px rgba(93,173,226,.7);transform:translateY(-2px);}
+
+/* hero stats column */
+.hero-stats{display:flex;flex-direction:column;gap:12px;}
+.stat-pill{
+  padding:16px 20px;border-radius:18px;
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,0.1);
+  text-align:center;
+  transition:all .3s;
+}
+.stat-pill:hover{background:rgba(255,255,255,0.09);transform:scale(1.03);}
+.stat-num{font-size:30px;font-weight:800;background:linear-gradient(135deg,#fff,var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.stat-lbl{font-size:11px;color:var(--muted);margin-top:2px;}
+
+/* ── ABOUT ── */
+#about{padding-top:60px;}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.about-bio{padding:32px;border-radius:24px;}
+.about-bio p{color:rgba(255,255,255,.65);margin-bottom:14px;line-height:1.9;font-size:15px;}
+.about-bio strong{color:#fff;}
+.info-rows{margin-top:24px;display:flex;flex-direction:column;gap:10px;}
+.info-row{display:flex;gap:12px;font-size:13px;align-items:center;}
+.info-icon{width:32px;height:32px;border-radius:10px;background:rgba(46,134,193,.2);border:1px solid rgba(93,173,226,.3);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+.info-lbl{color:var(--muted);}
+.info-val{color:#fff;}
+.info-val a{color:var(--accent3);text-decoration:none;}
+.about-highlights{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-content:start;}
+.hl{padding:24px;border-radius:20px;text-align:center;transition:all .3s;}
+.hl:hover{transform:translateY(-4px);}
+.hl-num{font-size:34px;font-weight:800;background:linear-gradient(135deg,var(--accent2),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hl-txt{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.4;}
+
+/* ── SKILLS ── */
+#skills{background:transparent;}
+.skills-wrap{display:flex;flex-direction:column;gap:14px;}
+.sg{padding:22px 26px;border-radius:20px;}
+.sg-title{font-size:11px;font-weight:600;letter-spacing:2px;color:var(--accent3);text-transform:uppercase;margin-bottom:14px;}
+.tags{display:flex;flex-wrap:wrap;gap:8px;}
+.tag{
+  font-size:12px;padding:5px 14px;border-radius:99px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  color:rgba(255,255,255,.75);
+  transition:all .2s;cursor:default;
+}
+.tag:hover{background:rgba(255,255,255,0.1);color:#fff;border-color:rgba(255,255,255,.2);}
+.tag.hot{
+  background:rgba(46,134,193,0.15);
+  border:1px solid rgba(93,173,226,0.35);
+  color:var(--accent3);
+}
+.tag.hot:hover{background:rgba(46,134,193,0.25);box-shadow:0 0 12px rgba(93,173,226,.25);}
+
+/* ── EXPERIENCE ── */
+#experience{background:transparent;}
+.tl{display:flex;flex-direction:column;gap:16px;}
+.tl-card{padding:28px 32px;border-radius:24px;transition:all .3s;position:relative;overflow:hidden;}
+.tl-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(93,173,226,.5),transparent);
+}
+.tl-card:hover{background:rgba(255,255,255,0.09);transform:translateY(-2px);}
+.tl-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;}
+.tl-company{font-size:17px;font-weight:700;}
+.tl-date{font-size:12px;color:var(--muted);background:rgba(255,255,255,.06);padding:4px 12px;border-radius:99px;border:1px solid rgba(255,255,255,.1);white-space:nowrap;}
+.tl-role{font-size:14px;color:var(--accent3);margin-bottom:14px;}
+.tl-ul{padding-left:18px;color:rgba(255,255,255,.6);font-size:13.5px;}
+.tl-ul li{margin-bottom:6px;line-height:1.6;}
+.tl-ul li strong{color:#fff;}
+.tl-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;}
+.chip{font-size:11px;padding:3px 11px;border-radius:99px;background:rgba(46,134,193,.15);color:var(--accent3);border:1px solid rgba(93,173,226,.25);}
+
+/* ── PROJECTS ── */
+#projects{background:transparent;}
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px;}
+.proj-card{border-radius:24px;overflow:hidden;transition:all .3s;position:relative;}
+.proj-card:hover{transform:translateY(-6px);border-color:rgba(93,173,226,.3);}
+.proj-card:hover .proj-glow{opacity:1;}
+.proj-glow{position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(93,173,226,.08),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none;border-radius:24px;}
+.proj-screen{
+  height:170px;background:var(--bg);
+  display:flex;align-items:center;justify-content:center;
+  border-bottom:1px solid var(--glass-border);
+  position:relative;overflow:hidden;
+}
+.proj-screen-bg{position:absolute;inset:0;opacity:.3;}
+.proj-appicon{
+  width:72px;height:72px;border-radius:18px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:32px;position:relative;z-index:1;
+  box-shadow:0 8px 32px rgba(0,0,0,.5);
+  border:1px solid rgba(255,255,255,.15);
+}
+.proj-body{padding:18px 20px;}
+.proj-name{font-size:16px;font-weight:700;margin-bottom:6px;}
+.proj-desc{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:14px;}
+.proj-stack{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px;}
+.proj-stack span{font-size:11px;padding:2px 9px;border-radius:99px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.55);}
+.proj-link{
+  display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;
+  color:var(--accent3);text-decoration:none;transition:gap .2s;
+}
+.proj-link:hover{gap:10px;}
+
+/* ── TESTIMONIALS ── */
+#testimonials{background:transparent;}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;}
+.testi-card{padding:28px;border-radius:24px;position:relative;overflow:hidden;transition:all .3s;}
+.testi-card:hover{transform:translateY(-3px);}
+.testi-quote{font-size:48px;line-height:1;color:var(--accent3);opacity:.4;margin-bottom:-8px;}
+.testi-text{font-size:14px;color:rgba(255,255,255,.65);line-height:1.8;margin-bottom:20px;font-style:italic;}
+.testi-author{display:flex;align-items:center;gap:12px;}
+.testi-av{
+  width:42px;height:42px;border-radius:50%;
+  background:linear-gradient(135deg,var(--accent),var(--accent3));
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:13px;flex-shrink:0;
+}
+.testi-name{font-size:14px;font-weight:600;}
+.testi-pos{font-size:12px;color:var(--muted);}
+
+/* ── CONTACT ── */
+#contact{background:transparent;}
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.contact-left{padding:32px;border-radius:24px;}
+.contact-left h3{font-size:22px;font-weight:700;margin-bottom:8px;}
+.contact-left p{color:var(--muted);font-size:14px;margin-bottom:28px;line-height:1.7;}
+.clinks{display:flex;flex-direction:column;gap:10px;margin-bottom:24px;}
+.clink{
+  display:flex;align-items:center;gap:14px;
+  padding:14px 16px;border-radius:16px;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  text-decoration:none;transition:all .2s;
+}
+.clink:hover{background:rgba(255,255,255,.08);border-color:rgba(93,173,226,.3);transform:translateX(4px);}
+.clink-icon{width:38px;height:38px;border-radius:12px;background:rgba(46,134,193,.2);border:1px solid rgba(93,173,226,.3);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.clink-title{font-size:14px;font-weight:600;color:#fff;}
+.clink-sub{font-size:12px;color:var(--muted);}
+.avail{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(48,209,88,.08);border:1px solid rgba(48,209,88,.25);
+  border-radius:12px;padding:12px 16px;font-size:13px;color:var(--green);
+}
+.contact-form{padding:32px;border-radius:24px;}
+.contact-form h3{font-size:22px;font-weight:700;margin-bottom:24px;}
+.fg{margin-bottom:16px;}
+.fg label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px;letter-spacing:.5px;text-transform:uppercase;}
+.fg input,.fg textarea{
+  width:100%;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:12px;padding:12px 16px;
+  color:#fff;font-size:14px;font-family:inherit;outline:none;
+  transition:border-color .2s;
+}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.25);}
+.fg input:focus,.fg textarea:focus{border-color:rgba(93,173,226,.5);background:rgba(255,255,255,.07);}
+.fg textarea{resize:vertical;min-height:110px;}
+.form-btn{
+  width:100%;padding:14px;
+  background:linear-gradient(135deg,var(--accent),var(--accent3));
+  color:#fff;border:none;border-radius:12px;
+  font-size:15px;font-weight:700;cursor:pointer;
+  box-shadow:0 0 24px rgba(46,134,193,.4);transition:all .2s;
+  font-family:inherit;
+}
+.form-btn:hover{box-shadow:0 0 40px rgba(93,173,226,.6);transform:translateY(-1px);}
+
+/* ── FOOTER ── */
+footer{
+  position:relative;z-index:1;
+  text-align:center;padding:32px 24px;
+  border-top:1px solid rgba(255,255,255,.06);
+  font-size:13px;color:rgba(255,255,255,.3);
+}
+footer span{color:var(--accent3);}
+
+@media(max-width:768px){
+  .hero-inner,.about-grid,.contact-wrap{grid-template-columns:1fr;}
+  .hero-stats{flex-direction:row;flex-wrap:wrap;justify-content:center;}
+  .hero-name{font-size:44px;}
+  .section-title{font-size:30px;}
+  .nav-links{display:none;}
+  nav{border-radius:20px;}
+}
+</style>
+</head>
+<body>
+
+<!-- BG ORBS -->
+<div class="orbs">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">ZI<span>.</span></div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#testimonials">Testimonials</a>
+  </div>
+  <a href="mailto:zuhaib.imtiaz.ios@gmail.com" class="nav-cta">Hire Me</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-pill"><span class="dot"></span>Available for opportunities</div>
+        <div class="hero-name">
+          <div class="first">Zuhaib</div>
+          <div class="last">Imtiaz</div>
+        </div>
+        <div class="hero-role">Senior iOS Engineer</div>
+        <div class="hero-desc">8+ years crafting high-performance iOS apps in fintech, messaging, health &amp; fitness, and security. Specialist in Swift, SwiftUI, TCA and Modular Architecture.</div>
+        <div class="hero-btns">
+          <a href="#projects" class="btn-glow">View Projects</a>
+          <a href="#testimonials" class="btn-glass">Testimonials</a>
+
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-pill"><div class="stat-num">8+</div><div class="stat-lbl">Years iOS</div></div>
+        <div class="stat-pill"><div class="stat-num">30%</div><div class="stat-lbl">Crash Reduction</div></div>
+        <div class="stat-pill"><div class="stat-num">10K+</div><div class="stat-lbl">Transactions / hr</div></div>
+        <div class="stat-pill"><div class="stat-num">99.9%</div><div class="stat-lbl">SDK Uptime</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-eyebrow">Who I am</div>
+    <div class="section-title"><span>About Me</span></div>
+    <div class="about-grid">
+      <div class="about-bio glass">
+        <p>I'm a <strong>Senior iOS Engineer</strong> based in Abu Dhabi, UAE, with 8+ years delivering production-grade apps across fintech, messaging, health &amp; fitness, and security.</p>
+        <p>I specialise in <strong>TCA</strong>, <strong>Modular Architecture with Tuist</strong>, and <strong>Clean Architecture</strong> — building codebases that scale and teams that thrive.</p>
+        <p>Beyond code, I'm passionate about <strong>mentoring engineers</strong>, fostering CI/CD culture, and shipping experiences users genuinely enjoy.</p>
+        <div class="info-rows">
+          <div class="info-row"><div class="info-icon">📍</div><span class="info-lbl">Location</span><span class="info-val">Abu Dhabi, UAE</span></div>
+          <div class="info-row"><div class="info-icon">✉️</div><span class="info-lbl">Email</span><span class="info-val"><a href="mailto:zuhaib.imtiaz.ios@gmail.com">zuhaib.imtiaz.ios@gmail.com</a></span></div>
+          <div class="info-row"><div class="info-icon">💼</div><span class="info-lbl">LinkedIn</span><span class="info-val"><a href="https://www.linkedin.com/in/zuhaib-imtiaz" target="_blank">zuhaib-imtiaz</a></span></div>
+
+          <div class="info-row"><div class="info-icon">✈️</div><span class="info-lbl">Relocation</span><span class="info-val" style="color:var(--green);">Open · Visa sponsorship welcome</span></div>
+        </div>
+      </div>
+      <div class="about-highlights">
+        <div class="hl glass-sm"><div class="hl-num">6</div><div class="hl-txt">Apps shipped</div></div>
+        <div class="hl glass-sm"><div class="hl-num">5+</div><div class="hl-txt">Companies worked with</div></div>
+        <div class="hl glass-sm"><div class="hl-num">100%</div><div class="hl-txt">Audit compliance</div></div>
+        <div class="hl glass-sm"><div class="hl-num">MS</div><div class="hl-txt">Computer Science 2018</div></div>
+        <div class="hl glass-sm" style="grid-column:span 2;"><div class="hl-num" style="font-size:22px;">🇦🇪 → 🌍</div><div class="hl-txt" style="font-size:13px;">Open to relocation across Europe &amp; globally</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-eyebrow">What I know</div>
+    <div class="section-title"><span>Skills</span></div>
+    <div class="skills-wrap">
+      <div class="sg glass">
+        <div class="sg-title">Architecture &amp; Design Patterns</div>
+        <div class="tags">
+          <span class="tag hot">TCA</span><span class="tag hot">Clean Architecture</span><span class="tag hot">Modular Architecture</span><span class="tag hot">MVVM-C</span><span class="tag">MVI</span><span class="tag">MVP</span><span class="tag">VIP</span><span class="tag">MVC</span><span class="tag">Factory Pattern</span><span class="tag">Observer Pattern</span><span class="tag">Builder Pattern</span>
+        </div>
+      </div>
+      <div class="sg glass">
+        <div class="sg-title">Programming &amp; Tools</div>
+        <div class="tags">
+          <span class="tag hot">Swift</span><span class="tag hot">SwiftUI</span><span class="tag hot">UIKit</span><span class="tag hot">Xcode</span><span class="tag hot">Combine</span><span class="tag hot">Swift Concurrency</span><span class="tag hot">CoreData</span><span class="tag hot">Tuist</span><span class="tag">SwiftData</span><span class="tag">Core Animation</span><span class="tag">CryptoKit</span><span class="tag">Core Location</span><span class="tag">Core Bluetooth</span><span class="tag">HealthKit</span><span class="tag">StoreKit</span><span class="tag">CallKit</span><span class="tag">XMPP</span><span class="tag">VOIP</span><span class="tag">REST</span><span class="tag">GraphQL</span><span class="tag">WebSockets</span><span class="tag">Objective-C</span><span class="tag">SPM</span><span class="tag">CocoaPods</span>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+        <div class="sg glass">
+          <div class="sg-title">Testing &amp; CI/CD</div>
+          <div class="tags">
+            <span class="tag hot">XCTest</span><span class="tag hot">Unit Testing</span><span class="tag hot">CI/CD</span><span class="tag hot">Fastlane</span><span class="tag hot">GitHub Actions</span><span class="tag">Snapshot Testing</span><span class="tag">UI Testing</span><span class="tag">BDD</span><span class="tag">Jenkins</span><span class="tag">GitLab CI</span>
+          </div>
+        </div>
+        <div class="sg glass">
+          <div class="sg-title">Security &amp; Compliance</div>
+          <div class="tags">
+            <span class="tag hot">OWASP Mobile</span><span class="tag hot">GDPR</span><span class="tag hot">PCI-DSS</span><span class="tag hot">End-to-End Encryption</span><span class="tag">SAST</span><span class="tag">MAST</span><span class="tag">SQLCipher</span><span class="tag">Memory Management</span><span class="tag">ARC</span>
+          </div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+        <div class="sg glass">
+          <div class="sg-title">Payment Technologies</div>
+          <div class="tags">
+            <span class="tag hot">Lean SDK</span><span class="tag hot">Stripe SDK</span><span class="tag hot">N-Genius</span><span class="tag">PayPal SDK</span><span class="tag">Checkout SDK</span>
+          </div>
+        </div>
+        <div class="sg glass">
+          <div class="sg-title">Accessibility &amp; Cloud</div>
+          <div class="tags">
+            <span class="tag hot">VoiceOver</span><span class="tag hot">WCAG 2.1</span><span class="tag">Dynamic Type</span><span class="tag hot">AWS</span><span class="tag hot">Firebase</span><span class="tag">AWS Amplify</span><span class="tag">Crowdin</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-eyebrow">Where I've worked</div>
+    <div class="section-title"><span>Experience</span></div>
+    <div class="tl">
+
+      <div class="tl-card glass">
+        <div class="tl-header">
+          <div><div class="tl-company">Comera Technology L.L.C</div><div class="tl-role">Lead Software Engineer – iOS (ComeraPay)</div></div>
+          <div class="tl-date">Dec 2023 – Present</div>
+        </div>
+        <ul class="tl-ul">
+          <li>Led development of <strong>Comera Pay</strong> — processing <strong>10,000+ transactions/hr</strong>, driving a <strong>30% reduction</strong> in UAE cash transactions.</li>
+          <li>Designed the <strong>Comera Pay SDK</strong> with <strong>99.9% uptime</strong> across all platforms.</li>
+          <li>Architected modular iOS apps using <strong>TCA + Tuist</strong> for scalability and testability.</li>
+          <li>Ensured <strong>PCI-DSS, GDPR</strong> and <strong>OWASP Mobile</strong> compliance with 100% audit pass rate.</li>
+          <li>Mentored junior engineers and drove Agile delivery cycles.</li>
+        </ul>
+        <div class="tl-chips"><span class="chip">Swift</span><span class="chip">TCA</span><span class="chip">Tuist</span><span class="chip">PCI-DSS</span><span class="chip">GDPR</span><span class="chip">SDK Development</span></div>
+      </div>
+
+      <div class="tl-card glass">
+        <div class="tl-header">
+          <div><div class="tl-company">Comera Technology L.L.C</div><div class="tl-role">Senior Software Engineer – iOS</div></div>
+          <div class="tl-date">Oct 2022 – Nov 2023</div>
+        </div>
+        <ul class="tl-ul">
+          <li>Built <strong>Comera</strong> — encrypted messaging for <strong>millions of daily users</strong>.</li>
+          <li>Introduced <strong>Comera AI</strong> feature using Swift, driving meaningful engagement uplift.</li>
+          <li>Refactored modules with <strong>Clean Architecture</strong>, reducing production issues.</li>
+          <li>Spearheaded code review culture and unit testing adoption.</li>
+        </ul>
+        <div class="tl-chips"><span class="chip">Swift</span><span class="chip">SwiftUI</span><span class="chip">Clean Architecture</span><span class="chip">XMPP</span><span class="chip">Encryption</span></div>
+      </div>
+
+      <div class="tl-card glass">
+        <div class="tl-header">
+          <div><div class="tl-company">Sibme</div><div class="tl-role">Senior Software Developer – iOS | Flutter</div></div>
+          <div class="tl-date">Dec 2020 – Oct 2022</div>
+        </div>
+        <ul class="tl-ul">
+          <li>Led iOS for <strong>Sibme</strong> — video coaching platform used by <strong>1,000+ schools worldwide</strong>.</li>
+          <li>Reduced crash frequency by <strong>30%</strong> through robust error handling and refactoring.</li>
+          <li>Ensured <strong>VoiceOver</strong> and accessibility compliance across core user flows.</li>
+        </ul>
+        <div class="tl-chips"><span class="chip">SwiftUI</span><span class="chip">Flutter</span><span class="chip">AVPlayer</span><span class="chip">Accessibility</span></div>
+      </div>
+
+      <div class="tl-card glass">
+        <div class="tl-header">
+          <div><div class="tl-company">AcclivousByte, Pvt.</div><div class="tl-role">iOS Developer</div></div>
+          <div class="tl-date">Nov 2019 – Nov 2020</div>
+        </div>
+        <ul class="tl-ul">
+          <li>Developed multiple apps using <strong>MVVM</strong> and <strong>Clean Architecture</strong> in Xcode.</li>
+          <li>Improved code quality through peer code reviews and Agile practices.</li>
+        </ul>
+        <div class="tl-chips"><span class="chip">Swift</span><span class="chip">MVVM</span><span class="chip">Agile</span></div>
+      </div>
+
+      <div class="tl-card glass">
+        <div class="tl-header">
+          <div><div class="tl-company">TikkiTech</div><div class="tl-role">Mobile Application Developer</div></div>
+          <div class="tl-date">Feb 2017 – Oct 2019</div>
+        </div>
+        <ul class="tl-ul">
+          <li>Built iOS UIs with <strong>Auto Layout</strong> and MVC in Xcode.</li>
+          <li>Collaborated on team projects using Scrum practices.</li>
+        </ul>
+        <div class="tl-chips"><span class="chip">Swift</span><span class="chip">UIKit</span><span class="chip">MVC</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-eyebrow">What I've shipped</div>
+    <div class="section-title"><span>Projects</span></div>
+    <div class="proj-grid">
+
+      <div class="proj-card glass">
+        <div class="proj-glow"></div>
+        <div class="proj-screen">
+          <div class="proj-screen-bg" style="background:radial-gradient(circle at 50% 50%,#1a4a7a,transparent);"></div>
+          <div class="proj-appicon" style="background:linear-gradient(135deg,#1F618D,#2E86C1);">💳</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-name">Comera Pay</div>
+          <div class="proj-desc">Secure fintech payment solution processing 10,000+ transactions hourly. Led SDK design, PCI-DSS compliance and team.</div>
+          <div class="proj-stack"><span>Swift</span><span>TCA</span><span>Tuist</span><span>PCI-DSS</span><span>SDK</span></div>
+          <a class="proj-link" href="https://apps.apple.com/ae/app/comera-pay/id6478868058" target="_blank">App Store ↗</a>
+        </div>
+      </div>
+
+      <div class="proj-card glass">
+        <div class="proj-glow"></div>
+        <div class="proj-screen">
+          <div class="proj-screen-bg" style="background:radial-gradient(circle at 50% 50%,#0d3d6b,transparent);"></div>
+          <div class="proj-appicon" style="background:linear-gradient(135deg,#0d3d6b,#1F618D);">💬</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-name">Comera</div>
+          <div class="proj-desc">End-to-end encrypted messaging for millions of daily users. Built Comera AI feature with Swift.</div>
+          <div class="proj-stack"><span>Swift</span><span>XMPP</span><span>Encryption</span><span>AI</span></div>
+          <a class="proj-link" href="https://apps.apple.com/ae/app/comera/id1450387255" target="_blank">App Store ↗</a>
+        </div>
+      </div>
+
+      <div class="proj-card glass">
+        <div class="proj-glow"></div>
+        <div class="proj-screen">
+          <div class="proj-screen-bg" style="background:radial-gradient(circle at 50% 50%,#1b3a5c,transparent);"></div>
+          <div class="proj-appicon" style="background:linear-gradient(135deg,#1b3a5c,#2E86C1);">🎥</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-name">Sibme</div>
+          <div class="proj-desc">Video coaching for 1,000+ schools. Reduced crashes 30%, ensured VoiceOver accessibility compliance.</div>
+          <div class="proj-stack"><span>SwiftUI</span><span>Flutter</span><span>AVPlayer</span><span>WCAG</span></div>
+          <a class="proj-link" href="https://apps.apple.com/us/app/sibme/id955456286" target="_blank">App Store ↗</a>
+        </div>
+      </div>
+
+      <div class="proj-card glass">
+        <div class="proj-glow"></div>
+        <div class="proj-screen">
+          <div class="proj-screen-bg" style="background:radial-gradient(circle at 50% 50%,#1a3a2a,transparent);"></div>
+          <div class="proj-appicon" style="background:linear-gradient(135deg,#1a4a2a,#27AE60);">💪</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-name">Muscle Booster</div>
+          <div class="proj-desc">Workout app. Led TCA migration, built AICoachChat from scratch, resolved AVPlayer composition bug in repetitive exercises.</div>
+          <div class="proj-stack"><span>Swift</span><span>TCA</span><span>AVPlayer</span><span>AICoachChat</span></div>
+          <a class="proj-link" href="https://apps.apple.com/ae/app/muscle-booster-workout-plans/id1446447749" target="_blank">App Store ↗</a>
+        </div>
+      </div>
+
+      <div class="proj-card glass">
+        <div class="proj-glow"></div>
+        <div class="proj-screen">
+          <div class="proj-screen-bg" style="background:radial-gradient(circle at 50% 50%,#3a1a1a,transparent);"></div>
+          <div class="proj-appicon" style="background:linear-gradient(135deg,#5D2D0D,#C0392B);">🔒</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-name">Secure Client Portals</div>
+          <div class="proj-desc">Secure virtual office document access portal with GDPR-aligned encryption and on-the-go features.</div>
+          <div class="proj-stack"><span>Swift</span><span>Encryption</span><span>GDPR</span></div>
+          <a class="proj-link" href="https://apps.apple.com/ae/app/secure-client-portals/id1572845627" target="_blank">App Store ↗</a>
+        </div>
+      </div>
+
+      <div class="proj-card glass">
+        <div class="proj-glow"></div>
+        <div class="proj-screen">
+          <div class="proj-screen-bg" style="background:radial-gradient(circle at 50% 50%,#2a1a3a,transparent);"></div>
+          <div class="proj-appicon" style="background:linear-gradient(135deg,#6C3483,#A569BD);">🏃</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-name">Mr. Rebounder</div>
+          <div class="proj-desc">Fitness app integrating Apple Health to track heart rate and calories with customisable workouts.</div>
+          <div class="proj-stack"><span>Swift</span><span>HealthKit</span><span>Apple Health</span></div>
+          <a class="proj-link" href="#" target="_blank">App Store ↗</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="container">
+    <div class="section-eyebrow">What people say</div>
+    <div class="section-title"><span>Testimonials</span></div>
+    <div class="testi-grid">
+      <div class="testi-card glass">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">I'd recommend Zuhaib without hesitation for any senior iOS, mobile lead, or fintech-heavy role. He led ComeraPay end to end — architecture, security, compliance, performance, and App Store launch. He also built a custom iOS SDK enabling seamless partner integration. He's exactly the kind of engineer who makes complex projects succeed and teams stronger.</div>
+        <div class="testi-author"><div class="testi-av" style="background:linear-gradient(135deg,#1F618D,#2E86C1);">AH</div><div><div class="testi-name">Aadil Hafeez</div><div class="testi-pos">Engineering Manager · Avrioc Technologies</div></div></div>
+      </div>
+      <div class="testi-card glass">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">Zuhaib consistently demonstrated a high level of technical expertise and professionalism. What truly stands out is his strong focus on user experience and attention to detail. He approaches development thoughtfully, asks the right questions, and ensures solutions are both technically sound and user-centric. He would be a valuable asset to any team.</div>
+        <div class="testi-author"><div class="testi-av" style="background:linear-gradient(135deg,#0d3d6b,#1F618D);">AN</div><div><div class="testi-name">Atif Naveed</div><div class="testi-pos">Sr. Software Engineer – Team Lead</div></div></div>
+      </div>
+      <div class="testi-card glass">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">Zuhaib has excellent expertise in iOS development and plays a key role in architectural decisions, code quality, and overall delivery. He leads by example, ensures best practices are followed, and maintains a high standard for performance, scalability, and maintainability. I highly recommend Zuhaib for any role requiring a skilled and dependable iOS Lead.</div>
+        <div class="testi-author"><div class="testi-av" style="background:linear-gradient(135deg,#1b3a5c,#2980B9);">SK</div><div><div class="testi-name">Sunny Kumar</div><div class="testi-pos">Assistant Engineering Manager</div></div></div>
+      </div>
+      <div class="testi-card glass">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">Zuhaib led our iOS development team with a calm and confident approach. He brought deep technical expertise in Swift and iOS architecture, and was always quick to step in and solve complex issues. He fostered a collaborative team environment, mentored junior developers, and ensured we delivered high-quality code on time.</div>
+        <div class="testi-author"><div class="testi-av" style="background:linear-gradient(135deg,#1a4a2a,#27AE60);">AY</div><div><div class="testi-name">Ahmad Yar</div><div class="testi-pos">Robotics & AI Engineer · iOS Developer</div></div></div>
+      </div>
+      <div class="testi-card glass">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">Zuhaib is one of the best iOS devs I have worked with. He knows how to solve complex problems with viable and long-term solutions. He is also a great team player — if he is not at his seat you'll probably find him helping other colleagues. I definitely recommend anyone to work with Zuhaib.</div>
+        <div class="testi-author"><div class="testi-av" style="background:linear-gradient(135deg,#6C3483,#A569BD);">MB</div><div><div class="testi-name">Muhammad Ahmed Baig</div><div class="testi-pos">Lead Software Engineer (iOS) · Avrioc</div></div></div>
+      </div>
+      <div class="testi-card glass">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">Zuhaib is an exceptionally talented iOS developer who consistently demonstrates a strong understanding of software development principles and an unwavering commitment to excellence. His ability to grasp complex concepts quickly and apply them effectively is truly commendable. His professionalism and technical expertise make him a valuable asset to any team.</div>
+        <div class="testi-author"><div class="testi-av" style="background:linear-gradient(135deg,#5D2D0D,#C0392B);">MM</div><div><div class="testi-name">Muhammad Maqsood</div><div class="testi-pos">Mobile Apps Development · AI · VOIP</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<footer>
+  Crafted with <span>Swift-level precision</span> · Zuhaib Imtiaz · Senior iOS Engineer · Abu Dhabi, UAE
+</footer>
+
+</body>
+</html>
